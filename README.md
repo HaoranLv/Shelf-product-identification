@@ -1,4 +1,4 @@
-# Shelf-product-identification
+# Shelf-product-detection
 
 Dataset and Codebase for CVPR2019 "Precise Detection in Densely Packed Scenes" [[Paper link]](https://arxiv.org/pdf/1904.00853.pdf)
 
