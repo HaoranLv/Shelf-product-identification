@@ -30,6 +30,11 @@ System diagram: (a) Input image. (b) A base network, with bounding box (BB) and 
 with our novel Soft-IoU layer. (c) Our EM-Merger converts Soft-IoU to Gaussian heat-map representing (d) objects captured by
 multiple, overlapping bounding boxes. (e) It then analyzes these box clusters, producing a single detection per object
 
+## Dependencies
+Please run the following command in a python 3.6 virtual environment:
+``` shell
+pip install -r requirements.txt
+```
 
 ## Qualitative Results
 
@@ -64,11 +69,17 @@ e.g.:
 where WEIGHT_FILE is the full path to the h5 file from step (2), and 0<=RATE<=1 computes the confidence as a weighted average between soft and hard scores. 
 
 e.g:
+
 csv file:
+
 `nohup env PYTHONPATH="/home/ubuntu/dev/SKU110K" python -u object_detector_retinanet/keras_retinanet/bin/predict.py --gpu 3 csv ".../customer/snapshot/Thu_May__2_17:10:30_2019/iou_resnet50_csv_07.h5" --hard_score_rate=0.5 | tee predict_cus.log`
+
 single image:
+
 `nohup env PYTHONPATH="/home/ec2-user/SageMaker/PDDS/SKU110K_CVPR19" python -u object_detector_retinanet/keras_retinanet/bin/predict.py single_image --image_path '.../customer/images/1.jpg' "/home/ec2-user/SageMaker/PDDS/SKU110K_CVPR19/models/iou_resnet50_csv_06.h5" --hard_score_rate=0.5 | tee predict.log`
+
 image dir:
+
 `nohup env PYTHONPATH="/home/ec2-user/SageMaker/PDDS/SKU110K_CVPR19" python -u object_detector_retinanet/keras_retinanet/bin/predict.py images --image_path '.../customer/images' "/home/ec2-user/SageMaker/PDDS/SKU110K_CVPR19/models/iou_resnet50_csv_06.h5" --hard_score_rate=0.5 | tee predict.log`
 
 
