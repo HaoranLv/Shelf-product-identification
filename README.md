@@ -12,6 +12,7 @@ A typical image in our SKU-110K, showing densely packed objects. (a) Detection r
 - [x] **Analyze customer data**
 - [x] **Fine-tuning on customer data**
 - [x] **Evaluation of mAP**
+- [ ] **Use ResNet101 as backbone**
 - [ ] **Use Flask to deploy endpoint**
 - [ ] **Use Amazon SageMaker to host endpoint**
 
