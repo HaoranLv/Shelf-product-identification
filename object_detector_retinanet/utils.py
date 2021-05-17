@@ -36,16 +36,19 @@ def create_folder(path):
     return folder_missing
 
 
-def root_dir(datafolder='SKU110K'):
-    if platform.system() == 'Linux':
-        return os.path.join(os.getenv('HOME'), 'SageMaker/PDDS/SKU110K_CVPR19', datafolder)
-    elif platform.system() == 'Windows':
-        return os.path.abspath('C:/Users/{}/SageMaker/PDDS/SKU110K_CVPR19/SKU110K/'.format(os.getenv('username')))
+def root_dir(abs_root=None,datafolder='SKU110K'):
+    if abs_root == None:
+        if platform.system() == 'Linux':
+            return os.path.join(os.getenv('HOME'), 'SageMaker/PDDS/SKU110K_CVPR19', datafolder)
+        elif platform.system() == 'Windows':
+            return os.path.abspath('C:/Users/{}/SageMaker/PDDS/SKU110K_CVPR19/SKU110K/'.format(os.getenv('username')))
+    else:
+        return abs_root
 
 
-def image_path(datafolder='SKU110K'):
-    return os.path.join(root_dir(datafolder=datafolder), IMG_FOLDER)
+def image_path(abs_root=None, datafolder='SKU110K'):
+    return os.path.join(root_dir(abs_root=abs_root, datafolder=datafolder), IMG_FOLDER)
 
 
-def annotation_path(datafolder='SKU110K'):
-    return os.path.join(root_dir(datafolder=datafolder), ANNOTATION_FOLDER)
+def annotation_path(abs_root=None, datafolder='SKU110K'):
+    return os.path.join(root_dir(abs_root=abs_root, datafolder=datafolder), ANNOTATION_FOLDER)

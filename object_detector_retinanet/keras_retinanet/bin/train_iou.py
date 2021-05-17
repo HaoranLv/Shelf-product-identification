@@ -49,7 +49,7 @@ from object_detector_retinanet.keras_retinanet.utils.transform import random_tra
 
 from object_detector_retinanet.utils import create_folder, image_path, annotation_path, root_dir, DEBUG_MODE
 
-
+abs_root='/home/ec2-user/SageMaker/PDDS/SKU110K_CVPR19/customer'
 def makedirs(path):
     # Intended behavior: try to create the directory,
     # pass if the directory exists already, fails otherwise.
@@ -297,12 +297,12 @@ def parse_args(args):
     oid_parser.add_argument('--annotation-cache-dir', help='Path to store annotation cache.', default='.')
     oid_parser.add_argument('--fixed-labels', help='Use the exact specified labels.', default=False)
 
-    data_dir = annotation_path(datafolder = 'customer')
+    data_dir = annotation_path(abs_root=abs_root, datafolder = 'customer')
     args_annotations = data_dir + '/annotations_train.csv'
     args_val_annotations = data_dir + '/annotations_val.csv'
 
-    args_snapshot_path = root_dir(datafolder = 'customer') + '/snapshot'
-    args_tensorboard_dir = root_dir(datafolder = 'customer') + '/logs'
+    args_snapshot_path = root_dir(abs_root=abs_root, datafolder = 'customer') + '/snapshot'
+    args_tensorboard_dir = root_dir(abs_root=abs_root, datafolder = 'customer') + '/logs'
 
     csv_parser = subparsers.add_parser('csv')
     csv_parser.add_argument('--annotations', help='Path to CSV file containing annotations for training.',
@@ -314,7 +314,7 @@ def parse_args(args):
                             default=args_val_annotations)
     csv_parser.add_argument('--base_dir',
                             help='Path to base dir for CSV file.',
-                            default=image_path(datafolder = 'customer'))
+                            default=image_path(abs_root=abs_root, datafolder = 'customer'))
 
     group = parser.add_mutually_exclusive_group()
     group.add_argument('--snapshot', help='Resume training from a snapshot.')
