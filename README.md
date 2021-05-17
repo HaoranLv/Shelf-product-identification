@@ -9,8 +9,9 @@ A typical image in our SKU-110K, showing densely packed objects. (a) Detection r
 
 
 ### to do list:
+- [x] **Analyze customer data**
 - [x] **Fine-tuning on customer data**
-- [x] **Model Effectiveness Evaluation**
+- [x] **Evaluation of mAP**
 - [ ] **Use Flask to deploy endpoint**
 - [ ] **Use Amazon SageMaker to host endpoint**
 
@@ -29,47 +30,14 @@ with our novel Soft-IoU layer. (c) Our EM-Merger converts Soft-IoU to Gaussian h
 multiple, overlapping bounding boxes. (e) It then analyzes these box clusters, producing a single detection per object
 
 
-## Dataset
-
-<img src="figures/benchmarks_comparison.jpg" width="750">
-
-We compare between key properties for related benchmarks. **#Img.**: Number of images. **#Obj./img.**: Average items per image. **#Cls.**: Number of object classes (more implies a harder detection problem due to greater appearance variations). **#Cls./img.**: Average classes per image. **Dense**: Are objects typically densely packed together, raising potential overlapping detection problems?. **Idnt**: Do images contain multiple identical objects or hard to separate object sub-regions?. **BB**: Bounding box labels available for measuring detection accuracy?.
-
-The dataset is provided for the exclusive use by the recipient and solely for academic and non-commercial purposes. 
-
-The dataset can be downloaded from <a href="http://trax-geometry.s3.amazonaws.com/cvpr_challenge/SKU110K_fixed.tar.gz"> here</a> or <a href="https://drive.google.com/file/d/1iq93lCdhaPUN0fWbLieMtzfB1850pKwd">here</a>.
-
-A pretrained model is provided <a href="https://drive.google.com/file/d/1f9tRzJSqjuUQzXz8WjJC0V_WD-8y_6wy/view?usp=sharing">here</a>. Note that its performance is slighly better than originally reported in the paper because of improved optimization.
-
 ## Qualitative Results
-Qualitative detection results on SKU-110K. 
 
-<img src="figures/qualitative.jpg" width="750">
+**mAP=0.285 in customer dataset.**
 
-## Notes
-
-**Please note that the main part of the code has been released, though we are still testing it to fix possible glitches. Thank you.**
-
-This implementation is built on top of https://github.com/fizyr/keras-retinanet.
-The SKU110K dataset is provided in csv format compatible with the code CSV parser.
-
-Dependencies include: `keras`, `keras-resnet`, `six`, `scipy`. `Pillow`, `pandas`, `tensorflow-gpu`, `tqdm`
-This repository requires `Keras 2.2.4` or higher, and was tested using `Python 3.6.5`, `Python 2.7.6`  and `OpenCV 3.1`.
-
-The output files will be saved under "$HOME"/Documents/SKU110K and have the same structure as in https://github.com/fizyr/keras-retinanet:
-The weight h5 files will are saved in the "snapshot" folder and the tensorboard log files are saved in the "logs" folder.
-
-Note that we have made several upgrades to the baseline detector since the beginning of this research, so the latest version can actually
-achieve even higher results than the ones originally reported.
-
-The EM-merger provided here is the stable version (not time-optimized). Some of the changes required for
-optimization are mentioned in the TO-DO comments.
-
-Contributions to this project are welcome.
 
 ## Usage
 
-Move the unzipped SKU110K folder to "$HOME"/Documents
+Move the unzipped customer folder to "./"
 
 Set $PYTHONPATH to the repository root 
 
