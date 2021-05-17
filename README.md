@@ -43,7 +43,7 @@ pip install -r requirements.txt
 
 ## Usage
 
-Move the unzipped customer folder to "./"
+Replace the unzipped customer folder to "./"
 
 Set $PYTHONPATH to the repository root 
 
