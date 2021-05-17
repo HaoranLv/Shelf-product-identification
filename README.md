@@ -55,7 +55,7 @@ train:
 where WEIGHT_FILE is the full path to the h5 file from step (1)
 
 e.g.:
-`python -u object_detector_retinanet/keras_retinanet/bin/train_iou.py --gpu 0 --weights "./customer/snapshot/Thu_May__2_17:07:11_2019/resnet50_csv_10.h5" csv | tee train_iou_cus.log`
+`python -u object_detector_retinanet/keras_retinanet/bin/train_iou.py --gpu 0 --weights ".../customer/snapshot/Thu_May__2_17:07:11_2019/resnet50_csv_10.h5" csv | tee train_iou_cus.log`
 
 
 (3) predict:
@@ -64,7 +64,12 @@ e.g.:
 where WEIGHT_FILE is the full path to the h5 file from step (2), and 0<=RATE<=1 computes the confidence as a weighted average between soft and hard scores. 
 
 e.g:
-`nohup env PYTHONPATH="/home/ubuntu/dev/SKU110K" python -u object_detector_retinanet/keras_retinanet/bin/predict.py --gpu 3 csv "./customer/snapshot/Thu_May__2_17:10:30_2019/iou_resnet50_csv_07.h5" --hard_score_rate=0.5 | tee predict_cus.log`
+csv file:
+`nohup env PYTHONPATH="/home/ubuntu/dev/SKU110K" python -u object_detector_retinanet/keras_retinanet/bin/predict.py --gpu 3 csv ".../customer/snapshot/Thu_May__2_17:10:30_2019/iou_resnet50_csv_07.h5" --hard_score_rate=0.5 | tee predict_cus.log`
+single image:
+`nohup env PYTHONPATH="/home/ec2-user/SageMaker/PDDS/SKU110K_CVPR19" python -u object_detector_retinanet/keras_retinanet/bin/predict.py single_image --image_path '.../customer/images/1.jpg' "/home/ec2-user/SageMaker/PDDS/SKU110K_CVPR19/models/iou_resnet50_csv_06.h5" --hard_score_rate=0.5 | tee predict.log`
+image dir:
+`nohup env PYTHONPATH="/home/ec2-user/SageMaker/PDDS/SKU110K_CVPR19" python -u object_detector_retinanet/keras_retinanet/bin/predict.py images --image_path '.../customer/images' "/home/ec2-user/SageMaker/PDDS/SKU110K_CVPR19/models/iou_resnet50_csv_06.h5" --hard_score_rate=0.5 | tee predict.log`
 
 
 The results are saved in CSV format in the "results" folder and drawn in "res_images_iou" folder.
