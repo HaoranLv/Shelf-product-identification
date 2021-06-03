@@ -85,6 +85,12 @@ image dir:
 
 The results are saved in CSV format in the "results" folder and drawn in "res_images_iou" folder.
 
+## build endpoint
+`cd endpoint
+sh build_and_push
+python create_endpoint.py`
+
+
 ## References
 [1] Eran Goldman*, Roei Herzig*, Aviv Eisenschtat*, Jacob Goldberger, Tal Hassner, [Precise Detection in Densely Packed Scenes](https://arxiv.org/abs/1904.00853), 2019.
 
