@@ -85,10 +85,17 @@ image dir:
 
 The results are saved in CSV format in the "results" folder and drawn in "res_images_iou" folder.
 
-## build endpoint
-`cd endpoint
+## Build endpoint
+``` shell
+cd endpoint
 sh build_and_push
-python create_endpoint.py`
+python create_endpoint.py
+```
+
+## Use endpoint
+``` shell
+python test.py
+```
 
 
 ## References
